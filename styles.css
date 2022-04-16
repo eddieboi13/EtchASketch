@@ -24,6 +24,7 @@ body {
     align-self: center;
     border-radius: 10px;
     border-color: rgb(0, 89, 255);
+    background-color: white;
 }
 
 button {
@@ -59,9 +60,26 @@ button {
 .button1 {
     display: flex;
     flex-direction: column;
+    margin-top: 60px;
 }
 
 .button2 {
     display: flex;
     flex-direction: column;
+    margin-top: 60px;
+}
+#clearAll {
+   background-color: crimson;
+}
+#gridSize {
+    background-color: royalblue;
+}
+#color {
+    background-color: rgba(119, 22, 209, 0.957);
+}
+#random {
+    background-color: rgba(19, 162, 209, 0.92);
+}
+#erase {
+    background-color: cadetblue;
 }

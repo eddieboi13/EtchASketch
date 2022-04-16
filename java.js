@@ -5,6 +5,7 @@ const gridSize = document.getElementById('gridSize')
 let size = 512/(area/numSquares)
 let color = document.getElementById('color')
 let random = document.getElementById('random')
+let erase = document.getElementById('erase')
 
 function createGrid() {
 for (let i = 0; i < area; i++) {
@@ -57,9 +58,7 @@ function changeSize() {
          alert('Error, number must be between 1 and 100')
      }
 }
-gridSize.addEventListener('mouseup', (e) => {
-    changeSize()
-})
+
 
 function changeColor() {
     const grid = document.getElementsByClassName('boxes')
@@ -81,9 +80,7 @@ function changeColor() {
     
 }
 }
-color.addEventListener('mouseup', (e) =>  {
-    changeColor()
-})
+
 
 function randomColor() {
     let rColor1 = Math.floor(Math.random()*256)
@@ -96,8 +93,29 @@ function randomColor() {
          }
         )
    }
-   console.log(rColor1)
 }
+
+function eraser() {
+    const grid = document.getElementsByClassName('boxes')
+    for (let n = 0; n < area; n++) {
+        grid[n].addEventListener('mouseover', (e) => {
+            grid[n].style.backgroundColor = 'white'
+         }
+        )
+   }
+}
+
+
+
+gridSize.addEventListener('mouseup', (e) => {
+    changeSize()
+})
+color.addEventListener('mouseup', (e) =>  {
+    changeColor()
+})
 random.addEventListener('mouseup', (e) => {
     randomColor()
+})
+erase.addEventListener('mouseup', (e) => {
+    eraser()
 })
