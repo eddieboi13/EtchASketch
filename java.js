@@ -2,6 +2,7 @@ const container = document.querySelector('.container')
 let numSquares = 32
 let area = numSquares*numSquares
 const gridSize = document.getElementById('gridSize')
+let size = 512/(area/numSquares)
 
 
 function createGrid() {
@@ -9,6 +10,8 @@ for (let i = 0; i < area; i++) {
     const grid =  document.createElement('div')
     grid.setAttribute('class', "boxes")
     document.getElementById('trueContainer').appendChild(grid)
+    grid.style.width = size + 'px'
+    grid.style.height = size + 'px'
 }
 }
 createGrid()
@@ -39,11 +42,15 @@ clearAll()
 
 
 function changeSize() {
-    const grid = document.querySelectorAll('boxes')
-    for(let n = 0; n < area; n++) {
-        grid.remove()
-
-    }
+    const grid = document.querySelectorAll('.boxes')
+    for (let n = 0; n < area; n++) {
+       grid.forEach(e => e.remove());
+     }
+     numSquares = prompt('Pick a grid size between 1-100')
+     area = numSquares*numSquares
+     size = 512/(area/numSquares)
+     createGrid()
+     hover()
 }
 gridSize.addEventListener('mouseup', (e) => {
     changeSize()
