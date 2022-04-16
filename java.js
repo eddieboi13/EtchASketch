@@ -4,7 +4,7 @@ let area = numSquares*numSquares
 const gridSize = document.getElementById('gridSize')
 let size = 512/(area/numSquares)
 let color = document.getElementById('color')
-
+let random = document.getElementById('random')
 
 function createGrid() {
 for (let i = 0; i < area; i++) {
@@ -63,16 +63,41 @@ gridSize.addEventListener('mouseup', (e) => {
 
 function changeColor() {
     const grid = document.getElementsByClassName('boxes')
-    answer = prompt('Choose a color.')
+    answer = prompt('Choose a color (be careful with spelling).')
+    if (answer != null) {
+        for (let n = 0; n < area; n++) {
+         grid[n].addEventListener('mouseover', (e) => {
+             grid[n].style.backgroundColor = answer
+          }
+         )
+    }
+} else {
     for (let n = 0; n < area; n++) {
         grid[n].addEventListener('mouseover', (e) => {
-         grid[n].style.backgroundColor = answer
+            grid[n].style.backgroundColor = 'black'
          }
         )
-     
-
+   }
+    
 }
 }
 color.addEventListener('mouseup', (e) =>  {
     changeColor()
+})
+
+function randomColor() {
+    let rColor1 = Math.floor(Math.random()*256)
+    let rColor2 = Math.floor(Math.random()*256)
+    let rColor3 = Math.floor(Math.random()*256)
+    const grid = document.getElementsByClassName('boxes')
+    for (let n = 0; n < area; n++) {
+        grid[n].addEventListener('mouseover', (e) => {
+            grid[n].style.backgroundColor = `rgb(${rColor1}, ${rColor2}, ${rColor3})`
+         }
+        )
+   }
+   console.log(rColor1)
+}
+random.addEventListener('mouseup', (e) => {
+    randomColor()
 })
