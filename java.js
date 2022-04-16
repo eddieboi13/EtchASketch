@@ -3,6 +3,7 @@ let numSquares = 32
 let area = numSquares*numSquares
 const gridSize = document.getElementById('gridSize')
 let size = 512/(area/numSquares)
+let color = document.getElementById('color')
 
 
 function createGrid() {
@@ -49,9 +50,29 @@ function changeSize() {
      numSquares = prompt('Pick a grid size between 1-100')
      area = numSquares*numSquares
      size = 512/(area/numSquares)
+     if (numSquares < 101 && numSquares > 0) {
      createGrid()
      hover()
+     } else {
+         alert('Error, number must be between 1 and 100')
+     }
 }
 gridSize.addEventListener('mouseup', (e) => {
     changeSize()
+})
+
+function changeColor() {
+    const grid = document.getElementsByClassName('boxes')
+    answer = prompt('Choose a color.')
+    for (let n = 0; n < area; n++) {
+        grid[n].addEventListener('mouseover', (e) => {
+         grid[n].style.backgroundColor = answer
+         }
+        )
+     
+
+}
+}
+color.addEventListener('mouseup', (e) =>  {
+    changeColor()
 })
