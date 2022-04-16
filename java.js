@@ -83,12 +83,13 @@ function changeColor() {
 
 
 function randomColor() {
-    let rColor1 = Math.floor(Math.random()*256)
-    let rColor2 = Math.floor(Math.random()*256)
-    let rColor3 = Math.floor(Math.random()*256)
+
     const grid = document.getElementsByClassName('boxes')
     for (let n = 0; n < area; n++) {
         grid[n].addEventListener('mouseover', (e) => {
+            let rColor1 = Math.floor(Math.random()*256)
+            let rColor2 = Math.floor(Math.random()*256)
+            let rColor3 = Math.floor(Math.random()*256)
             grid[n].style.backgroundColor = `rgb(${rColor1}, ${rColor2}, ${rColor3})`
          }
         )
